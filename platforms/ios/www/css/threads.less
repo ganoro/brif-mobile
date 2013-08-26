@@ -1,0 +1,38 @@
+.thread_dock {
+    .search {
+        width: 100%;
+    }
+    .thread_list {
+        li {
+            width: 145pt;
+            float: left;
+            .border-box;
+            padding: 5pt 5pt;
+            background-color: #F8F8F8;
+            margin: 0 2pt 2pt 0pt;
+            cursor: pointer;
+            .box-shadow(~'inset 0px 28px 28px -28px rgba(0,0,0,0.1), 0 1pt 2pt rgba(0,0,0,0.15)');
+            .transition;
+            &.active {
+                background-color: rgb(255, 253, 245);
+                .box-shadow(~'inset 0px 12px 71px -22px rgba(240, 196, 21, 0.54), 0 1pt 2pt rgba(0,0,0,0.15)');
+            }
+            .border-radius;
+            .symbol {
+                width: 40pt;
+                height: 40pt;
+                float: left;
+                margin-right: 8pt;
+            }
+            .icon-user:before {
+                font-size: 36pt;
+                left: 50%;
+                position: absolute;
+                margin-left: -14pt;
+                top: 50%;
+                margin-top: -18pt;
+            }
+        }
+        
+    }
+}

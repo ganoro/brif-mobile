@@ -1,0 +1,71 @@
+.transition(@x : all .2s ease-in-out) {
+    -webkit-transition: @x;
+    -moz-transition: @x;
+    -o-transition: @x;
+    transition: @x;
+}
+
+.transition {
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+.box-shadow(@x) {
+    -webkit-box-shadow: @x;
+    -moz-box-shadow: @x;
+    box-shadow: @x;   
+}
+
+.border-box {
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.gradient (@bottomColor, @topColor){
+    background: -moz-linear-gradient(top, @topColor 0%, @bottomColor 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,@topColor), color-stop(100%,@bottomColor));
+    background: -webkit-linear-gradient(top, @topColor 0%,@bottomColor 100%);
+    background: -o-linear-gradient(top, @topColor 0%,@bottomColor 100%);
+    background: -ms-linear-gradient(top, @topColor 0%,@bottomColor 100%);
+    background: linear-gradient(to bottom, @topColor 0%,@bottomColor 100%);   
+}
+
+.border-radius(@x: 2px) {
+    -webkit-border-radius: @x;
+    -moz-border-radius: @x;
+    border-radius: @x;
+}
+
+.translateY(@y) {
+    transform: translateY(@y);
+    -webkit-transform: translateY(@y);
+}
+
+.translateX(@x) {
+    transform: translateX(@x);
+    -webkit-transform: translateX(@x);
+}
+
+.background-size(@size) {
+    -webkit-background-size: @size;
+    -moz-background-size: @size;
+    -o-background-size: @size;
+    background-size: @size;
+}
+.clear {
+    clear: both;
+    display: block;
+}
+.blur {
+    -webkit-filter: blur(1pt);
+    -moz-filter: blur(1pt);
+    -o-filter: blur(1pt);
+    -ms-filter: blur(1pt);
+    filter: blur(1pt);
+    opacity: 0.4;
+}
+.darkBg {
+    background-image: url('../img/patterns/debut_dark/debut_dark.png');
+}
