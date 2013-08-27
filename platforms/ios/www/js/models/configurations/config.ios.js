@@ -8,7 +8,7 @@
 				client_email:"",
 				redirect_uris:[
 					"urn:ietf:wg:oauth:2.0:oob",
-					"oob"
+					"http://localhost"
 				],
 				client_x509_cert_url:"",
 				client_id:"808248997275-td1l666khkenuda7irdhr27ullu7svps.apps.googleusercontent.com",
