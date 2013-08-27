@@ -1,0 +1,87 @@
+* {
+    margin: 0;
+    padding: 0;
+    outline: none;
+    position: relative;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0,0,0,0); /* make transparent link selection, adjust last value opacity 0 to 1.0 */    
+}
+body {
+    font-size: @baseFontSize;
+    font-family: @baseFontFamily;
+    background-color: @bodyBackground;
+    color: @textColor;
+    line-height: @baseLineHeight;
+    -webkit-touch-callout: none;                /* prevent callout to copy image, etc when tap to hold */
+    -webkit-text-size-adjust: none;             /* prevent webkit from resizing text to fit */
+    -webkit-user-select: none;                  /* prevent copy paste, to allow, change 'none' to 'text' */
+    background-color:#E4E4E4;
+    background-image:linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-ms-linear-gradient(top, #A7A7A7 0%, #E4E4E4 51%);
+    background-image:-webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0, #A7A7A7),
+        color-stop(0.51, #E4E4E4)
+    );
+    background-attachment:fixed;
+    font-size:10pt;
+    height:100%;
+    margin:0pt;
+    padding:0pt;
+    width:100%;
+}
+a {
+    cursor: pointer;
+    color: @linkColor;
+    text-decoration: none;
+    .transition(all .1s ease-in-out);
+    &:hover {
+        text-decoration: none;
+        color: @linkColorHover;
+    }
+}
+ul {
+    list-style: none;
+}
+input[type="text"], input[type="email"], input[type="password"], [contenteditable="true"], textarea {
+    background-color: @inputBackground;
+    border: 1px solid @inputBorder;
+    .border-box;
+    padding: 5pt 8pt 3pt;
+    font-size: 11pt;
+    line-height: 12pt;
+    font-weight: inherit;
+    color: inherit;
+    .border-radius;
+    margin-bottom: 4pt;
+}
+::-webkit-input-placeholder {
+   font-family: arial;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   font-weight: inherit;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   font-weight: inherit;
+}
+
+:-ms-input-placeholder {  
+   font-weight: inherit;
+}
+.symbol {
+    .background-size(cover);
+    .border-radius(7pt);
+    .box-shadow(~"inset 0px 1px 1px rgba(255,255,255,1), 0px 3px 2px -2px rgba(0,0,0,0.9), 0px 1px 2px rgba(0,0,0,0.5)");
+    .border-box;
+    background-repeat:no-repeat;
+    background-position: center center;
+    .transition;
+}
+h1 {
+    margin-bottom: 4pt;
+}
