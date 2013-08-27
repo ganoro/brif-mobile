@@ -25,32 +25,28 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet/less" type="text/css" href="css/imports.less"/>
         <link href='http://fonts.googleapis.com/css?family=Didact+Gothic|family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
-        <script type="text/javascript">
-            less = {
-                env: "development",  // "development" or "production"
-                async: true,       // load imports async
-                fileAsync: true,   // load imports async when in a page under
-                                    // a file protocol
-                poll: 1000,         // when in watch mode, time in ms between polls
-                functions: {},      // user functions, keyed by name
-                dumpLineNumbers: "mediaQuery", // or "mediaQuery" or "all"
-                relativeUrls: false,// whether to adjust url's to be relative
-                                    // if false, url's are already relative to the
-                                    // entry less file
-                rootpath: ""// a path to add on to the start of every url
-                                    //resource
-            };
-        </script>
+        <!-- Libs -->
         <script src="js/libs/jquery.min.js"></script>    
         <script src="js/libs/underscore.min.js"></script>
         <script src="js/libs/backbone.min.js"></script>
         <script src="js/libs/less.js"></script>
         <script src="js/libs/moment.js"></script>
         <script src="cordova.js"></script>
-        <script src="js/index.js"></script>
-        <script>
-            app.initialize();
-        </script>
+        <script src="js/main.js"></script>
+        
+        <!-- Helpers -->
+        <script src="js/helpers/templates.js"></script>
+        
+        <!-- Models -->
+        <script src="js/models/configurations/config.ios.js"></script>
+        <script src="js/models/sign_in.js"></script>
+        <script src="js/models/user.js"></script>
+
+        <!-- Collections -->
+        
+        <!-- Views -->
+        <script src="js/views/sign_in.js"></script>
+        
         <title>Brif - Mobile</title>
     </head>
     <body>
