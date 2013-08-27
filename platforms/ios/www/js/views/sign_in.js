@@ -50,7 +50,4 @@
         }
     });
     brif.views.signIn = new brif.viewClass.signIn({model: brif.models.signIn});
-    $(document).ready(function(){
-        brif.views.signIn.render();
-    });
 })();
