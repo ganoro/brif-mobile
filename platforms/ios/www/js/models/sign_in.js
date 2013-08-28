@@ -9,6 +9,6 @@
 		}
 	});
 	brif.models.signIn = new brif.modelClass.SignIn({
-		web:brif.models.config.get('googleSecret')
+		googleSecret:brif.models.config.get('googleSecret')
 	});
 })();

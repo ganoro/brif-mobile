@@ -36,11 +36,11 @@
         openAuthWindow: function(){
             gapi.auth.authorize({
                 response_type: 'code',
-                client_id: this.model.get('web').client_id,
+                client_id: this.model.get('googleSecret').client_id,
                 approval_prompt : 'force',
                 access_type : 'offline',
                 scope: this.model.get('scopes'),
-                redirect_uri : this.model.get('web').redirect_uris[0],
+                redirect_uri : this.model.get('googleSecret').redirect_uris[0],
                 state: this.model.get('stationName')
             }, this.model.handleAuthResult);
             return false;

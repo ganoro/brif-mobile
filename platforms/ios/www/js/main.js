@@ -36,49 +36,62 @@
 
 	var googleapi = {
 		authorize: function(options) {
-        var scopes = options.scope.join("+");
+			var scopes = options.scope.join("+");
 			var deferred = $.Deferred();
 			var authUrl = 'https://accounts.google.com/o/oauth2/auth?' + $.param({
-                 response_type: 'code',
-                 approval_prompt : 'force',
-                 access_type : 'offline',
+				response_type: 'code',
+				approval_prompt : 'force',
+				access_type : 'offline',
 				client_id: options.client_id,
 				redirect_uri: options.redirect_uri,
 				scope: scopes
 			});
- authUrl = authUrl.replace(/%2B/g, "+");
+			authUrl = authUrl.replace(/%2B/g, "+");
 			var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
- authWindow.addEventListener('loadstart', function(e) {
-                  var url = e.url;
-                  var code = /\?code=(.+)$/.exec(url);
-                  var error = /\?error=(.+)$/.exec(url);
-                                               
-                  if (code || error) {
-                             authWindow.close();
-                  }
-                  
-                  //TODO - exchange code for access token...
-                  });
- 
- 
+			authWindow.addEventListener('loadstart', function(e) {
+				var url = e.url;
+				var code = /\?code=(.+)$/.exec(url);
+				var error = /\?error=(.+)$/.exec(url);
+
+				if (code || error) {
+					authWindow.close();
+				}
+
+				if (code) {
+					$.post('https://accounts.google.com/o/oauth2/token', {
+						code: code[1],
+						client_id: options.client_id,
+						client_secret: options.client_secret,
+						redirect_uri: options.redirect_uri,
+						grant_type: 'authorization_code'
+					}).done(function(data) {
+							alert(data);
+							deferred.resolve(data);
+							//TODO - send refreshable token to brif backend
+						}).fail(function(response) {
+							alert(response);
+							deferred.reject(response.responseJSON);
+						});
+				} else if (error) {
+					deferred.reject({
+						error: error[1]
+					});
+				}
+			});
 			return deferred.promise();
 		}
 	};
 
 	$(document).on('deviceready', function() {
-
-                   var $loginButton = $('#login a');
-		var $loginStatus = $('#login p');
-
-			googleapi.authorize({
-				client_id: brif.models.config.get('googleSecret').client_id,
-				client_secret: brif.models.config.get('googleSecret').client_id,
-				redirect_uri: brif.models.config.get('googleSecret').redirect_uris[1],
-				scope: brif.models.signIn.get('scopes')
-			}).done(function(data) {
-					$loginStatus.html('Access Token: ' + data.access_token);
-				}).fail(function(data) {
-					$loginStatus.html(data.error);
-				});
+		googleapi.authorize({
+			client_id: brif.models.config.get('googleSecret').client_id,
+			client_secret: brif.models.config.get('googleSecret').client_id,
+			redirect_uri: brif.models.config.get('googleSecret').redirect_uris[1],
+			scope: brif.models.signIn.get('scopes')
+		}).done(function(data) {
+			$('body').html('Access Token: ' + data.access_token);
+		}).fail(function(data) {
+			$('body').html(data.error);
+		});
 	});
 })();
