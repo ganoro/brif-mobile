@@ -65,8 +65,14 @@
 						redirect_uri: options.redirect_uri,
 						grant_type: 'authorization_code'
 					}).done(function(data) {
-							alert(data);
 							deferred.resolve(data);
+							$.post(brif.models.config.get('endPointUrl') + '/auth/mobile-signin',data)
+								.done(function(resp){
+									console.log(resp);
+								})
+								.fail(function(resp){
+
+								});
 							//TODO - send refreshable token to brif backend
 						}).fail(function(response) {
 							alert(response);
@@ -85,7 +91,7 @@
 	$(document).on('deviceready', function() {
 		googleapi.authorize({
 			client_id: brif.models.config.get('googleSecret').client_id,
-			client_secret: brif.models.config.get('googleSecret').client_id,
+			client_secret: brif.models.config.get('googleSecret').client_secret,
 			redirect_uri: brif.models.config.get('googleSecret').redirect_uris[1],
 			scope: brif.models.signIn.get('scopes')
 		}).done(function(data) {
