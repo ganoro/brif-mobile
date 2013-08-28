@@ -1,6 +1,7 @@
 (function () {
-	brif.modelClass.SignIn = Backbone.Model.extend({
+	brif.modelClass.Gapi = Backbone.Model.extend({
 		initialize:function () {
+			this.conf = brif.models.config.attributes;
 			_.bindAll(this, 'authenticate', 'signIn');
 			brif.events.on('deviceready', this.authenticate);
 		},
@@ -8,7 +9,7 @@
 			apiKey:'AIzaSyDQU5DYKmI1gvk-RGwLJFL0g2r0_Tm5Tko',
 			scopes:['https://mail.google.com', 'https://www.google.com/m8/feeds/', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/userinfo.profile']
 		},
-		getUserNameAndEmail: function(){
+		getNameAndEmail: function(){
 			var that = this;
 			// Get user's name & email
 			$.ajax({
@@ -42,35 +43,24 @@
 		},
 		authenticate: function(){
 			brif.router.navigate('', {trigger: true});
-			var that = this;
 			var authData = jQuery.parseJSON(localStorage.getItem('authData'));
 			if(!_.isEmpty(authData)) {
-				// save data to user model for convenient access
-				brif.models.user.set({
-					access_token: authData.access_token,
-					expires_in: authData.expires_in,
-					refresh_token: authData.refresh_token
-				});
-				this.getUserNameAndEmail();
+				this.trigger('user authenticated');
+				this.getNameAndEmail();
 			} else {
-				this.signIn({
-					client_id: that.get('googleSecret').client_id,
-					redirect_uri: that.get('googleSecret').redirect_uris[1],
-					client_secret: that.get('googleSecret').client_secret,
-					scope: brif.models.signIn.get('scopes')
-				});
+				this.signIn();
 			}
 		},
-		signIn: function(options) {
+		signIn: function() {
+			var gSecret = this.conf.googleSecret;
 			var that = this;
-			var scopes = options.scope.join("+");
 			var authUrl = 'https://accounts.google.com/o/oauth2/auth?' + $.param({
 				response_type: 'code',
 				approval_prompt : 'force',
 				access_type : 'offline',
-				client_id: options.client_id,
-				redirect_uri: options.redirect_uri,
-				scope: scopes
+				client_id: gSecret.client_id,
+				redirect_uri: gSecret.redirect_uris[1],
+				scope: this.conf.scopes.join("+")
 			});
 			authUrl = authUrl.replace(/%2B/g, "+");
 			var authWindow = window.open(authUrl, '_blank', 'location=no,toolbar=no');
@@ -78,20 +68,18 @@
 				var url = e.url;
 				var code = /\?code=(.+)$/.exec(url);
 				var error = /\?error=(.+)$/.exec(url);
-
 				if (code || error) {
 					authWindow.close();
 				}
-
 				if (code) {
 					$.post('https://accounts.google.com/o/oauth2/token', {
 						code: code[1],
-						client_id: options.client_id,
-						client_secret: options.client_secret,
-						redirect_uri: options.redirect_uri,
+						client_id: gSecret.client_id,
+						client_secret: gSecret.client_secret,
+						redirect_uri: gSecret.redirect_uris[1],
 						grant_type: 'authorization_code'
 					}).done(function(data) {
-						// take only what you need
+						// take only what we need
 						var authData = {
 							access_token: data.access_token,
 							expires_in: data.expires_in,
@@ -99,7 +87,6 @@
 						};
 						// Put the authData into storage
 						localStorage.setItem('authData', JSON.stringify(authData));
-
 						// send data to brif sever
 						$.post(that.get('endPointUrl') + '/auth/mobile-signin',data)
 							.done(function(resp){})
@@ -109,9 +96,8 @@
 								console.log(resp.message);
 								brif.router.navigate('fail', {trigger: true});
 							});
-
+						// return to authentication
 						that.authenticate();
-
 					}).fail(function(response) {
 						alert(response);
 						response = jQuery.parseJSON(response);
@@ -123,7 +109,5 @@
 			});
 		}
 	});
-	brif.models.signIn = new brif.modelClass.SignIn({
-		googleSecret: brif.models.config.get('googleSecret')
-	});
+	brif.models.gapi = new brif.modelClass.Gapi();
 })();

@@ -14,10 +14,9 @@
 				client_id:"808248997275-td1l666khkenuda7irdhr27ullu7svps.apps.googleusercontent.com",
 				auth_provider_x509_cert_url:"https://www.googleapis.com/oauth2/v1/certs"
 			},
-			indexFileType:'html',
-			signInFileType:'html',
 			endPointUrl:'http://api.brif.us',
-			stationName:'ofersarid'
+			apiKey:'AIzaSyDQU5DYKmI1gvk-RGwLJFL0g2r0_Tm5Tko',
+			scopes:['https://mail.google.com', 'https://www.google.com/m8/feeds/', 'https://www.googleapis.com/auth/calendar', 'https://www.googleapis.com/auth/userinfo.profile']
 		}
 	});
 	brif.models.config = new brif.modelClass.Config();

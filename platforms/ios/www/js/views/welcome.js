@@ -18,7 +18,7 @@
 		signOut: function(){
 			$.get('https://accounts.google.com/logout', function(){
 				localStorage.clear();
-				brif.models.signIn.authenticate();
+				brif.models.gapi.authenticate();
 			});
 		},
 		events: {
