@@ -25,34 +25,37 @@
         <link rel="stylesheet" type="text/css" href="css/index.css" />
         <link rel="stylesheet/less" type="text/css" href="css/imports.less"/>
         <link href='http://fonts.googleapis.com/css?family=Didact+Gothic|family=Pathway+Gothic+One' rel='stylesheet' type='text/css'>
-        <!-- Libs -->
-        <script src="js/libs/jquery.min.js"></script>    
+
+		<!-- Libs -->
+        <script src="js/libs/jquery.min.js"></script>
         <script src="js/libs/underscore.min.js"></script>
         <script src="js/libs/backbone.min.js"></script>
         <script src="js/libs/less.js"></script>
         <script src="js/libs/moment.js"></script>
         <script src="cordova.js"></script>
         <script src="js/main.js"></script>
-        
-        <!-- Helpers -->
+
+        <!--  Helpers -->
         <script src="js/helpers/templates.js"></script>
-        
+		<script src="js/helpers/link_handler.js"></script>
+
         <!-- Models -->
         <script src="js/models/configurations/config.ios.js"></script>
         <script src="js/models/gapi.js"></script>
         <script src="js/models/user.js"></script>
 
         <!-- Collections -->
-        
+
         <!-- Views -->
-        <script src="js/views/sign_in.js"></script>
+        <script src="js/views/fail.js"></script>
 		<script src="js/views/welcome.js"></script>
 
 		<!-- Routs -->
 		<script src="js/routs/main.js"></script>
-        
+		<script src="js/routs/fail.js"></script>
+
         <title>Brif - Mobile</title>
     </head>
-    <body>
+    <body onload="onLoad()">
     </body>
 </html>

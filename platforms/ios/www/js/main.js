@@ -32,9 +32,17 @@
 		events: _.extend({}, Backbone.Events)
 	};
 	brif.router = new Backbone.Router();
-	Backbone.history.start();
-	$(document).on('deviceready', function() {
-		//localStorage.clear();
-		brif.events.trigger('deviceready');
-	});
+	Backbone.history.start({pushState: true});
+
 })();
+
+// Wait for device API libraries to load
+function onLoad() {
+	document.addEventListener("deviceready", onDeviceReady, false);
+}
+
+// device APIs are available
+function onDeviceReady() {
+	// Now safe to use device APIs
+	brif.events.trigger('deviceready');
+}

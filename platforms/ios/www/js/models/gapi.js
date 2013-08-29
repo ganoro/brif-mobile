@@ -32,9 +32,8 @@
 					brif.router.navigate('main', {trigger: true});
 				},
 				error: function(err) {
-					switch(err.statusText) {
-						case 'Token revoked':
-						case 'Token expired':
+					switch(err.status) {
+						case 401: //Token expired
 							localStorage.clear();
 							that.authenticate();
 					}

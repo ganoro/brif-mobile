@@ -1,5 +1,5 @@
 (function(){    
-    brif.modelClass.user = Backbone.Model.extend({
+    brif.modelClass.User = Backbone.Model.extend({
 		initialize: function(){
 			this.listenTo(brif.models.gapi, 'user authenticated', this.copyFromLocal);
 		},
@@ -14,5 +14,5 @@
         url: brif.models.config.get('endPointUrl')+'/signin'
     });
     
-    brif.models.user = new brif.modelClass.user();
+    brif.models.user = new brif.modelClass.User();
 })();
