@@ -32,8 +32,7 @@
 		events: _.extend({}, Backbone.Events)
 	};
 	brif.router = new Backbone.Router();
-	Backbone.history.start({pushState: true});
-
+	Backbone.history.start();
 })();
 
 // Wait for device API libraries to load
@@ -45,4 +44,5 @@ function onLoad() {
 function onDeviceReady() {
 	// Now safe to use device APIs
 	brif.events.trigger('deviceready');
+	brif.utils.goToApp();
 }

@@ -1,5 +1,5 @@
 (function(){
-    brif.modelClass.thread = Backbone.Model.extend({
+    brif.modelClass.Group = Backbone.Model.extend({
         initialize: function(){
             this.set('active', false);
             this.formatSymbol();

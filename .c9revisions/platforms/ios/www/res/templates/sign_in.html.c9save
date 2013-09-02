@@ -1,9 +1,0 @@
-{"ts":1377504143124,"silentsave":true,"restoring":false,"patch":[[]],"length":0}
-{"contributors":[],"silentsave":true,"ts":1377504144297,"patch":[[{"diffs":[[1,"<!--Add a button for the user to click to initiate auth sequence -->\n<div class=\"logo\">Brif</div>\n<button id=\"authorize-button\" class=\"button rosy\">Sign in with Google</button>\n"]],"start1":0,"start2":0,"length1":0,"length2":177}]],"length":177,"saved":false}
-{"contributors":[],"silentsave":true,"ts":1377507158143,"patch":[[{"diffs":[[0,"v class="],[-1,"\""],[1,"'"],[0,"logo\">Br"]],"start1":72,"start2":72,"length1":17,"length2":17}]],"length":177,"saved":false}
-{"ts":1377507160461,"patch":[[{"diffs":[[0,"ss='logo"],[-1,"\""],[1,"'"],[0,">Brif</d"]],"start1":77,"start2":77,"length1":17,"length2":17}]],"length":177,"saved":false}
-{"ts":1377507180525,"patch":[[{"diffs":[[0,"tton id="],[-1,"\""],[1,"'"],[0,"authoriz"]],"start1":101,"start2":101,"length1":17,"length2":17}]],"length":177,"saved":false}
-{"ts":1377507183602,"patch":[[{"diffs":[[0,"e-button"],[-1,"\""],[1,"'"],[0," class=\""]],"start1":118,"start2":118,"length1":17,"length2":17}]],"length":177,"saved":false}
-{"ts":1377507306928,"patch":[[{"diffs":[[0,"-button'"],[1," "],[0," class=\""]],"start1":119,"start2":119,"length1":16,"length2":17}]],"length":178,"saved":false}
-{"ts":1377507326406,"patch":[[{"diffs":[[0,"-button'"],[1,"       "],[0,"  class="]],"start1":119,"start2":119,"length1":16,"length2":23}]],"length":185,"saved":false}
-{"ts":1377508384800,"patch":[[{"diffs":[[0,"-button'"],[-1,"        "],[0," class=\""]],"start1":119,"start2":119,"length1":24,"length2":16}]],"length":177,"saved":false}
