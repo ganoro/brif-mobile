@@ -28,8 +28,10 @@
 		collectionClass: {},
 		templates: {},
 		utils: {},
+		bi: {},
 		featureSwitch: {},
-		events: _.extend({}, Backbone.Events)
+		events: _.extend({}, Backbone.Events),
+		network : {}
 	};
 	brif.router = new Backbone.Router();
 	Backbone.history.start();
